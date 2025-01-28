@@ -1,0 +1,77 @@
+/* Reset default margins and padding for all elements */
+* {
+    margin: 0
+    padding: 0
+    box-sizing: border-box;
+}
+
+/* Set the background image for the body */
+body {
+    background-image: url('123.jpg.jpg'); /* Make sure the image is in the same folder or adjust the path */
+    background-size: cover;  /* This ensures the image covers the entire viewport */
+    background-position: center center;  /* Center the image */
+    height: 100vh;  /* Make the body take up the full height of the screen */
+    display: flex;
+    justify-content: center;  /* Horizontally center the content */
+    align-items:start;  /* Vertically center the content */
+    color: rgb(247, 231, 8);  /* Set the text color to white for contrast */
+    font-family: Arial, sans-serif;  /* Choose a font for the text */
+}
+
+/* Optional: Styling for the content */
+.content {
+    text-align: center;  /* Center the text inside the content box */
+    background-color: rgb(0, 2, 3);  /* Semi-transparent black background for readability */
+    padding: 20px;x;
+    border:radius 200px; /* Rounded corners for the content box */
+}
+
+h1 {
+    font-size: 4em;  /* Make the heading bigger */
+}
+
+p {
+    font-size: 1.9em;  /* Slightly larger text for the paragraph */
+}
+/* Style for Prayer Times Section */
+#prayerTimes {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    color: white;
+}
+
+#prayerTimes ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#prayerTimes li {
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+
+/* Style for the ZIP Code Input and Button */
+input[type="text"] {
+    padding: 10px;
+    font-size: 1em;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    margin-left: 10px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

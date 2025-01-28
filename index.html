@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Webpage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="content">
+        <h1>وَأَنْ أَقِيمُوا الصَّلَاةَ وَاتَّقُوهُ ۚ وَهُوَ الَّذِي إِلَيْهِ تُحْشَرُونَ</h1>
+        <p>أوقات الصلاة لهذا اليوم في مسجد مدينة دي موين</p>
+    </div>
+</body>
+</html>
+<
+        <!-- Prayer Times Section -->
+        <h2>Today's Prayer Times</h2>
+        <div id="prayerTimes">
+            <p>Loading prayer times...</p>
+        </div>
+
+        <!-- ZIP Code Input and Button to Change Prayer Times -->
+        <h3>Enter ZIP Code to Get Prayer Times:</h3>
+        <input type="text" id="zipCodeInput" placeholder="Enter ZIP code" />
+        <button onclick="getPrayerTimesByZip()">Get Prayer Times</button>
+    </div>
+
+    <!-- JavaScript to Fetch Prayer Times -->
+    <script>
+        // Function to get the latitude and longitude of a ZIP code using Google Maps Geocoding API
+        async function getCoordinates(zipCode) {
+            const apiKey = 'YOUR_GOOGLE_MAPS_API_KEY';  // Replace with your own Google API Key
+            const geoUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=${apiKey}`;
+            try {
+                const response = await fetch(geoUrl);
+                const data = await response.json();
+                if (data.status === 'OK') {
+                    const location = data.results[0].geometry.location;
+                    return location;  // Return the latitude and longitude
+                } else {
+                    alert('Could not find coordinates for this ZIP code.');
+                    return null;
+                }
+            } catch (error) {
+                console.error('Error fetching coordinates:', error);
+                alert('Error fetching coordinates.');
+                return null;
+            }
+        }
+
+        // Function to fetch and display prayer times based on latitude and longitude
+        async function getPrayerTimesByZip() {
+            const zipCode = document.getElementById('zipCodeInput').value;
+            if (!zipCode) {
+                alert('Please enter a ZIP code.');
+                return;
+            }
+
+            const coordinates = await getCoordinates(zipCode);
+            if (coordinates) {
+                const { lat, lng } = coordinates;
+                await getPrayerTimes(lat, lng);  // Fetch prayer times using latitude and longitude
+            }
+        }
+
+        // Function to fetch prayer times from Aladhan API using latitude and longitude
+        async function getPrayerTimes(lat, lng) {
+            const apiUrl = `http://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lng}&method=2`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                if (data.code === 200) {
+                    const timings = data.data.timings;
+                    const prayerTimesHTML = `
+                        <ul>
+                            <li>Fajr: ${timings.Fajr}</li>
+                            <li>Dhuhr: ${timings.Dhuhr}</li>
+                            <li>Asr: ${timings.Asr}</li>
+                            <li>Maghrib: ${timings.Maghrib}</li>
+                            <li>Isha: ${timings.Isha}</li>
+                        </ul>
+                    `;
+                    document.getElementById('prayerTimes').innerHTML = prayerTimesHTML;
+                } else {
+                    document.getElementById('prayerTimes').innerHTML = 'Failed to load prayer times.';
+                }
+            } catch (error) {
+                console.error('Error fetching prayer times:', error);
+                document.getElementById('prayerTimes').innerHTML = 'Error fetching prayer times.';
+            }
+        }
+
+        // Fetch initial prayer times for default location when the page loads
+        window.onload = function() {
+            // Default ZIP Code or coordinates (you can change this)
+            getPrayerTimesByZip();
+        };
+    </script>
+</body>
+</html>
