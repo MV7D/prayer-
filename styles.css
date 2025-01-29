@@ -1,77 +1,83 @@
-/* Reset default margins and padding for all elements */
+/* Basic reset */
 * {
-    margin: 0
-    padding: 0
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-/* Set the background image for the body */
-body {
-    background-image: url('123.jpg.jpg'); /* Make sure the image is in the same folder or adjust the path */
-    background-size: cover;  /* This ensures the image covers the entire viewport */
-    background-position: center center;  /* Center the image */
-    height: 100vh;  /* Make the body take up the full height of the screen */
-    display: flex;
-    justify-content: center;  /* Horizontally center the content */
-    align-items:start;  /* Vertically center the content */
-    color: rgb(247, 231, 8);  /* Set the text color to white for contrast */
-    font-family: Arial, sans-serif;  /* Choose a font for the text */
-}
-
-/* Optional: Styling for the content */
-.content {
-    text-align: center;  /* Center the text inside the content box */
-    background-color: rgb(0, 2, 3);  /* Semi-transparent black background for readability */
-    padding: 20px;x;
-    border:radius 200px; /* Rounded corners for the content box */
+.container {
+    background-color: #2a3b33;
+    padding: 0px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(5, 250, 136, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
 }
 
 h1 {
-    font-size: 4em;  /* Make the heading bigger */
+    margin-bottom: 20px;
+    color: #b9a91b;
 }
 
-p {
-    font-size: 1.9em;  /* Slightly larger text for the paragraph */
-}
-/* Style for Prayer Times Section */
-#prayerTimes {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 20px;
-    color: white;
+form {
+    margin-bottom: 2px;
 }
 
-#prayerTimes ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-#prayerTimes li {
-    font-size: 1.2em;
-    margin: 5px 0;
-}
-
-/* Style for the ZIP Code Input and Button */
 input[type="text"] {
     padding: 10px;
-    font-size: 1em;
-    margin-top: 20px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    width: 80%;
+    margin-right: 10px;
+    border-radius:  #ec2b1d;
+    border-radius: 4px;
 }
 
 button {
     padding: 10px 20px;
-    font-size: 1em;
-    margin-left: 10px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
+    background-color: #d61313;
+    color: rgb(255, 251, 0);
+    border:#2a3b33
+    border-radius: -12
+    px;
+    cursor:auto
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #242724;
+}
+
+#prayer-times {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    text-align: left;
+    font-size: 16px;
+    color: #ee1616;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('123.jpg.jpg'); /* Path to your image */
+    background-size: cover; /* Makes sure the image covers the whole page */
+    background-position: center; /* Centers the image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+body {
+    font-family: 'Amiri', serif; /* استخدام خط Amiri */
+    background-color: #5329eb;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: rgb(178, 211, 29); /* لتغيير اللون للنص */
+}
+
+.arabic-text {
+    font-size: 72px; /* حجم النص */
+    direction: rtl; /* لضمان الكتابة من اليمين لليسار */
 }
